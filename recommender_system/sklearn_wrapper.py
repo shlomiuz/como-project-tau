@@ -48,6 +48,7 @@ class MC(BaseEstimator):
                     P[u, :] += self.gamma * (e * Q[i, :] - self.lmbda * P[u, :])  # Update this user's features
                     Q[i, :] += self.gamma * (e * P[u, :] - self.lmbda * Q[i, :])  # Update this movie's features
                 train_errors.append(rmse_score(R, Q, P))  # Training RMSE for this pass
+
         elif self.solver == "batch_gd":
             # Batch GD
             for epoch in range(self.n_epochs):
